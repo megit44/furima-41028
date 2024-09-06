@@ -52,7 +52,7 @@ Things you may want to cover:
 | category_id        | integer    | null: false |
 | condition_id       | integer    | null: false |
 | shipping_fee_id    | integer    | null: false |
-| area_id            | integer    | null: false |
+| prefecture_id      | integer    | null: false |
 | shipping_day_id    | integer    | null: false |
 | user               | references | null: false, foreign_key: true |
 
@@ -61,23 +61,22 @@ Things you may want to cover:
 - belongs_to :category
 - belongs_to :condition
 - belongs_to :shipping_fee
-- belongs_to :area
+- belongs_to :prefecture
 - belongs_to :shipping_day
+- has_one :order
 
 
 ## orders テーブル
 
 | Column | Type       | Options                               |
 | ------ | ---------- | ------------------------------------- |
-| card_number   | integer    | null: false   |
-| expiration    | integer    | null: false   |
-| security_code | integer    | null: false   |
 | user          | references | null: false, foreign_key: true |
 | item          | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 - has_one :address
+- belongs_to :item
 
 
 ## addresses テーブル
@@ -88,7 +87,7 @@ Things you may want to cover:
 | prefecture_id | integer    | null: false      |
 | city          | string     | null: false      |
 | house_number  | string     | null: false      |
-| building_name | string     | null: false      |
+| building_name | string     | null: true      |
 | phone_number  | string     | null: false      |
 | order         | references | null: false, foreign_key: true |
 
