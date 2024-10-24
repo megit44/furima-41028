@@ -14,6 +14,11 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     context '無効な場合' do
+      it 'tokenが空では登録できないこと' do
+        @order_address.token = nil
+        expect(@order_address).not_to be_valid
+      end
+
       it 'user_idが空であると無効である' do
         @order_address.user_id = nil
         expect(@order_address).not_to be_valid
