@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe OrderAddress, type: :model do
   before do
     user = FactoryBot.create(:user)
-    item = FactoryBot.create(:item, user:)
+    item = FactoryBot.create(:item)
     @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id, postal_code: '123-4567',
                                                       phone_number: '09012345678')
   end
